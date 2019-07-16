@@ -1,7 +1,7 @@
 const DB_CONFIG = {
     host: "localhost",
     port: "3306",
-    database: "db_mobileshop",
+    database: "db_projectmanager",
     user: "root",
     password: "",
     prefix: ""

@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="bg-dark">
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-form">
+                    <%if (status && status === 'ERROR'){%>
+                    <div class="alert alert-danger" role="alert">
+                        <%=message%>
+                    </div>
+                    <%}%>
+                    <form action="/admin/login" method="post">
+                        <div class="form-group">
+                            <label>Tên đăng nhập</label>
+                            <input type="text" class="form-control" placeholder="Tên đăng nhập" name="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Mật khẩu" name="Password">
+                        </div>
+                        <div class="checkbox">
+                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/footer %>
+</body>
+
+</html>

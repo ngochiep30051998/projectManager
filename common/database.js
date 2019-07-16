@@ -1,7 +1,7 @@
-var mysql = require('mysql');
-var dbConfig = require('../constants/configs');
+const mysql = require('mysql');
+const dbConfig = require('../constants/configs');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: dbConfig.DB_CONFIG.host,
     user: dbConfig.DB_CONFIG.user,
     password: dbConfig.DB_CONFIG.password,
