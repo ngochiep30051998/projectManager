@@ -8,8 +8,8 @@ const status = require('../../constants/status');
 const validateHelper = require('../../helpers/validate');
 
 /* GET home page. */
-router.get('/index', (req, res, next) => {
-    res.render('admin/pages/index');
+router.get('/', (req, res, next) => {
+    res.redirect('/admin/project/');
 });
 
 //login

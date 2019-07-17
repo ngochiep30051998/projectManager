@@ -112,4 +112,12 @@ router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
 
 })
 
+//search
+router.get('/search', middleware.LoggedIn, async (req, res) => {
+    const param = req.query.q;
+    const result = await projectModel.searchProject(param);
+    res.render('admin/pages/project/searchProject', {
+        listProject: result
+    });
+})
 module.exports = router;

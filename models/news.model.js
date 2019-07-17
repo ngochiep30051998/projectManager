@@ -60,11 +60,23 @@ const deleteNews = (id) => {
         });
     });
 }
-
+//search
+const searchNews = (param) => {
+    return new Promise((resolve, reject) => {
+        conn.query(`SELECT * FROM news WHERE Title LIKE '%${param}%'`, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
     deleteNews: deleteNews,
     editNews: editNews,
     getNewsById: getNewsById,
-    addNews: addNews
+    addNews: addNews,
+    searchNews: searchNews
 }

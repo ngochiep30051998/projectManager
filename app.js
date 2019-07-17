@@ -9,6 +9,7 @@ const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin/admin.route');
 const adminProjectRouter = require('./routes/admin/project.route');
 const adminNewsRouter = require('./routes/admin/news.route');
+const customerRouter = require('./routes/admin/customer.route');
 
 const methodOverride = require('method-override')
 
@@ -39,6 +40,7 @@ app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/admin/project', adminProjectRouter);
 app.use('/admin/news', adminNewsRouter);
+app.use('/admin/customer', customerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

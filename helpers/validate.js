@@ -84,8 +84,38 @@ const validateLogin = (params) => {
     }
     return responseData;
 }
+
+const validateNews = (req) => {
+    let responseData = {
+        status: '',
+        message: ''
+    };
+
+    if (!req.body.newsTitle || req.body.newsTitle === '') {
+        const responseData = {
+            status: status.ERROR,
+            message: 'Phải nhập tiêu đề'
+        };
+        return responseData;
+    }
+
+    if (!req.body.newsLink || req.body.newsLink === '') {
+        const responseData = {
+            status: status.ERROR,
+            message: 'Phải nhập địa chỉ liên kết'
+        };
+        return responseData;
+    }
+    responseData = {
+        status: status.SUCCESS,
+        message: 'Kiểm tra thành công'
+    }
+    return responseData;
+
+}
 module.exports = {
     validateProject: validateProject,
     validateEditProject: validateEditProject,
-    validateLogin: validateLogin
+    validateLogin: validateLogin,
+    validateNews: validateNews
 }

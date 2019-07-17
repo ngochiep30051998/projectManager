@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <% include ../../partials/head %>
+</head>
+
+<body>
+
+
+    <!-- Left Panel -->
+
+    <% include ../../partials/leftMenu %>
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+
+        <% include ../../partials/header %>
+
+        <!-- Header-->
+
+        <!-- .content -->
+        <div class="content mt-3">
+            <div id="mess"></div>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table id="mytable" class="table table-bordred table-striped">
+
+                                <thead>
+                                    <th>Tên khách hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Dự án quan tâm</th>
+                                </thead>
+                                <tbody>
+                                    <% listCustomer.forEach((customer) => { %>
+                                    <tr>
+                                        <td style="width:25%;"><%= customer.Name %></td>
+                                        <td style="width:15%;"><%= customer.Phone %></td>
+                                        <td style="width:15%;"><%= customer.Email %></td>
+                                        <td style="width:20%;"><%= customer.Address %></td>
+                                        <td style="width:25%;"><%= customer.ProjectName %></td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- .animated -->
+        </div> <!-- .content -->
+
+
+        <% include ../../partials/footer %>
+
+</body>
+
+</html>

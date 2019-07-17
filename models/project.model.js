@@ -60,10 +60,23 @@ const deleteProject = (id) => {
         });
     });
 }
+
+const searchProject = (param) => {
+    return new Promise((resolve, reject) => {
+        conn.query(`SELECT * FROM project WHERE ProjectName LIKE '%${param}%' OR Location LIKE '%${param}%'`, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
     addProject: addProject,
     getProjectById: getProjectById,
     editProject: editProject,
-    deleteProject: deleteProject
+    deleteProject: deleteProject,
+    searchProject: searchProject
 }
