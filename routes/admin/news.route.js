@@ -6,6 +6,8 @@ const newsModel = require('../../models/news.model');
 const middleware = require('../../helpers/middleware');
 const status = require('../../constants/status');
 
+const fs = require('fs');
+
 //upload file
 const multer = require('multer');
 
@@ -67,7 +69,7 @@ router.get('/edit/:id', middleware.LoggedIn, async (req, res) => {
 
 router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req, res) => {
     const id = req.params.id;
-    console.log(id)
+    const oldImagePath = `public/upload/news/${req.body.oldImage}`;
     let news = {
         Id: id,
         Title: req.body.newsTitle,
@@ -75,6 +77,11 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Image: req.file ? req.file.filename : req.body.oldImage,
         Link: req.body.newsLink
     }
+
+    if(req.file){
+        fs.unlinkSync(oldImagePath);
+    }
+
     const validate = validateHelper.validateNews(req);
     if (validate.status === status.ERROR) {
         res.render('admin/pages/news/editNews', {
@@ -95,7 +102,13 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
 // delete news
 router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
     try {
+        const image = await newsModel.getImageFromNews(req.params.id);
+        const oldImagePath = `public/upload/news/${image[0].Image}`;
+
         const del = await newsModel.deleteNews(req.params.id);
+
+        fs.unlinkSync(oldImagePath);
+
         let responseData = {
             status: true
         }

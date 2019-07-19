@@ -13,6 +13,19 @@ const getAll = () => {
         });
     });
 }
+
+const deleteCustomer = (id) => {
+    return new Promise((resolve, reject) => {
+        conn.query('DELETE FROM customer WHERE ProjectId = ?', id, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
-    getAll: getAll
+    getAll: getAll,
+    deleteCustomer: deleteCustomer
 }

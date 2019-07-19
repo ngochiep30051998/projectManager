@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const projectModel = require('../../models/project.model');
+const customerModel = require('../../models/customer.model');
 
 const middleware = require('../../helpers/middleware');
 const status = require('../../constants/status');
@@ -13,6 +14,7 @@ const upload = multer({ dest: 'public/upload/project/' });
 
 const validateHelper = require('../../helpers/validate');
 
+const fs = require('fs');
 
 router.get('/', middleware.LoggedIn, async (req, res) => {
     const result = await projectModel.getAll();
@@ -68,6 +70,8 @@ router.get('/edit/:id', middleware.LoggedIn, async (req, res) => {
 
 router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req, res) => {
     const id = req.params.id;
+    const oldImagePath = `public/upload/project/${req.body.oldImage}`;
+
     let project = {
         Id: id,
         ProjectName: req.body.projectName,
@@ -76,6 +80,9 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Content: req.body.content,
         Price: req.body.price,
         ViewNumber: req.body.viewNumber
+    }
+    if(req.file){
+        fs.unlinkSync(oldImagePath);
     }
     const validate = validateHelper.validateEditProject(req);
     if (validate.status === status.ERROR) {
@@ -97,7 +104,11 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
 // delete project
 router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
     try {
+        const image = await projectModel.getImageFromProject(req.params.id);
+        const oldImagePath = `public/upload/project/${image[0].Image}`;
+        const delCustomer = await customerModel.deleteCustomer(req.params.id);
         const del = await projectModel.deleteProject(req.params.id);
+        fs.unlinkSync(oldImagePath);
         let responseData = {
             status: true
         }

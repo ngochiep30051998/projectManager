@@ -72,7 +72,7 @@ const searchProject = (param) => {
         });
     });
 }
-const getOutstandingProject = ()=> {
+const getOutstandingProject = () => {
     return new Promise((resolve, reject) => {
         conn.query(`SELECT * FROM project ORDER BY ViewNumber DESC LIMIT 6`, (err, result) => {
             if (err) {
@@ -83,6 +83,19 @@ const getOutstandingProject = ()=> {
         });
     });
 }
+
+const getImageFromProject = (id) => {
+    return new Promise((resolve, reject) => {
+        conn.query(`SELECT Image FROM project WHERE Id = ?`, id, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports = {
     getAll: getAll,
     addProject: addProject,
@@ -90,5 +103,6 @@ module.exports = {
     editProject: editProject,
     deleteProject: deleteProject,
     searchProject: searchProject,
-    getOutstandingProject: getOutstandingProject
+    getOutstandingProject: getOutstandingProject,
+    getImageFromProject: getImageFromProject
 }

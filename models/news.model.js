@@ -73,9 +73,21 @@ const searchNews = (param) => {
     });
 }
 
-const getOutstandingNews = ()=> {
+const getOutstandingNews = () => {
     return new Promise((resolve, reject) => {
         conn.query(`SELECT * FROM news ORDER BY Id DESC LIMIT 5`, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
+const getImageFromNews = (id) => {
+    return new Promise((resolve, reject) => {
+        conn.query(`SELECT Image FROM news WHERE Id = ?`, id, (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -92,5 +104,6 @@ module.exports = {
     getNewsById: getNewsById,
     addNews: addNews,
     searchNews: searchNews,
-    getOutstandingNews: getOutstandingNews
+    getOutstandingNews: getOutstandingNews,
+    getImageFromNews: getImageFromNews
 }
