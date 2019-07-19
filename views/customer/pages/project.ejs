@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <!-- Header-->
+
+    <% include ../partials/header %>
+
+    <!-- Header-->
+    <main id="main" class="">
+        <div class="row content-project">
+            <% listProject.forEach((project) => { %>
+            <div class="col-lg-4">
+                <div class="imagenho1">
+                    <img src="<%='/upload/project/' +project.Image %>" width="100%" alt="">
+                    <h3><%= project.ProjectName %></h3>
+                    <p><%= project.Location %></p>
+                    <a href="/project-detail/<%= project.Id%>" class="xct">xem chi tiết</a>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </main>
+
+    <% include ../partials/footer %>
+</body>
+
+</html>

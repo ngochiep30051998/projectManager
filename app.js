@@ -4,8 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./routes/customer/index.route');
 const adminRouter = require('./routes/admin/admin.route');
 const adminProjectRouter = require('./routes/admin/project.route');
 const adminNewsRouter = require('./routes/admin/news.route');
@@ -35,8 +34,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/admin/project', adminProjectRouter);
 app.use('/admin/news', adminNewsRouter);

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <!-- Header-->
+
+    <% include ../partials/header %>
+
+    <!-- Header-->
+    <div class="content_1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5  _1content">
+                    <div class="khoito">
+                        <div class="line1">
+                            <img src="customer/images/logonho.png" alt="">
+                            <h2>về chúng tôi</h2>
+                        </div>
+                        <div class="line2">
+                            <p class="mh-font-small">Chúng tôi phát triển dự án, không chỉ ở những mét vuông xây dựng
+                                <br> mà góp phần tạo nên những nơi cư trú an bình, hạnh phúc
+                                <br>những điểm đến vui chơi, giải trí, nghỉ dưỡng tuyệt hảo.
+                                <br>Ở những nơi đó, mọi người đều cảm thấy hạnh phúc vì giá trị sống ngày một tăng cao.
+                            </p>
+                        </div>
+                        <div class="line3">
+                            <div class="khoinho1">
+                                <img src="customer/images/anhnd1.jpg" alt="">
+                                <h1>465</h1>
+                                <p>nhân sự chủ chôt</p>
+                            </div>
+                            <div class="khoinho2">
+                                <img src="customer/images/anhnd2.jpg" alt="">
+                                <h1>257</h1>
+                                <p>dự án triển khai</p>
+                            </div>
+                            <div class="khoinho3">
+                                <img src="customer/images/anhnd3.jpg" alt="">
+                                <h1>386</h1>
+                                <p>khách hàng & đối tác</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 _2content">
+                    <img src="customer/images/anhnd4.png" width="100%" alt="">
+                </div>
+            </div>
+
+            <div class="iconleft">
+                <img class="dt" src="customer/images/dt_nd1.png" alt="">
+                <img class="email" src="customer/images/email.png" alt="">
+                <img class="arrow" src="customer/images/arrow_top.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="content_3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title_ct3">
+                        <h2>dự án tiêu biểu</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 co_hr">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <% data.listProject.forEach((project) => { %>
+                <div class="col-lg-4">
+                    <div class="imagenho1">
+                        <img src="<%='/upload/project/' +project.Image %>" width="100%" alt="">
+                        <h3><%= project.ProjectName %></h3>
+                        <p><%= project.Location %></p>
+                        <a href="/project-detail/<%= project.Id%>" class="xct">xem chi tiết</a>
+                    </div>
+                </div>
+                <% }); %>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title_ct4">
+                        <h2>tin tức nổi bật</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="khoito_ct4">
+                        <img src="<%='/upload/news/' +data.listNews[0].Image %>" width="100%" alt="">
+                        <a href="<%= data.listNews[0].Link %>" target="_blank">
+                            <p><%= data.listNews[0].Title %></p>
+                        </a>
+                        <p class="content" id="content"><%= data.listNews[0].Content %></p>
+                        <b id="viewMore" class="btn btn-outline-primary">Xem thêm</b>
+                        <b id="viewLess" class="btn btn-outline-primary">Thu gọn</b>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <% for(let i=1; i < data.listNews.length; i++) { %>
+                    <div class="khoi1_ct4">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="<%='/upload/news/' +data.listNews[i].Image %>" class="rounded" width="100%"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-8">
+                                <a href="<%= data.listNews[i].Link %>" target="_blank">
+                                    <p><%= data.listNews[i].Title %></p>
+                                </a>
+                                <p class="content"><%= data.listNews[i].Content %></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col_hr">
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="customer/images/nganhang.jpg" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>
+
+    <script>
+        $(document).ready(() => {
+            const viewLess = document.getElementById("viewLess");
+            viewLess.style.display = "none";
+        })
+        $('#viewMore').on('click', () => {
+            $('#content').removeClass('content');
+            const viewLess = document.getElementById("viewLess");
+            const viewMore = document.getElementById("viewMore");
+            viewMore.style.display = "none";
+            viewLess.style.display = "inline";
+        });
+        $('#viewLess').on('click', () => {
+            $('#content').addClass('content');
+            const viewLess = document.getElementById("viewLess");
+            const viewMore = document.getElementById("viewMore");
+            viewMore.style.display = "inline";
+            viewLess.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>

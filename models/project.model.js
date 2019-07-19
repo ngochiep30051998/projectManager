@@ -72,11 +72,23 @@ const searchProject = (param) => {
         });
     });
 }
+const getOutstandingProject = ()=> {
+    return new Promise((resolve, reject) => {
+        conn.query(`SELECT * FROM project ORDER BY ViewNumber DESC LIMIT 6`, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
     addProject: addProject,
     getProjectById: getProjectById,
     editProject: editProject,
     deleteProject: deleteProject,
-    searchProject: searchProject
+    searchProject: searchProject,
+    getOutstandingProject: getOutstandingProject
 }
