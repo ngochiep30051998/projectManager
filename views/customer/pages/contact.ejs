@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <!-- Header-->
+
+    <% include ../partials/header %>
+
+    <!-- Header-->
+    <main id="main" class="">
+            <div id="detail-content" role="main" class="content-area">
+                <section class="section" id="section_1629092814">
+                    <div class="section-content relative">
+                        <div class="row row-small align-middle align-center" id="row-33849410">
+                            <div class="col medium-8 small-12 large-6">
+                                <div class="col-inner" style="background-color:rgb(234, 235, 243);padding:10px 10px 10px 10px;">
+                                    <p class="mh-no-margin">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4671310741433!2d105.79941205053818!3d21.013986993589533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5f0cf710af%3A0xbc860577a763365f!2sPowerGate+Software!5e0!3m2!1svi!2s!4v1564070314042!5m2!1svi!2s"
+                                         width="100%" height="400" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                                    </p>
+                                </div>
+                                <p>Tòa nhà văn phòng CapitalLand, 600A Điện Biên Phủ, Phường 22, quận Bình Thạnh, TP.HCM </p>
+                                <p>ĐT: (028) 3 521 9999 - Fax: (028) 377 51 7777</p>
+                                <p>Tổng đài CSKH: <a href="tel:0123456789">0123 456 789</a></p>
+                            </div>
+                            <div class="col medium-12 small-12 large-6">
+                                <div class="col mh-col-form-contact medium-12 small-12 large-6">
+                                    <div class="col-inner">
+                                        <div class="container section-title-container mh-title-left-simple" style="margin-top:0px;margin-bottom:10px;">
+                                            <h3 class="section-title section-title-normal">
+                                                <b></b>
+                                                <span class="section-title-main" style="font-size:120%;color:rgb(0, 0, 0);">Liên hệ với chúng tôi</span>
+                                                <b></b>
+                                            </h3>
+                                        </div>
+                                        <p class="mh-font-small mh-color-secondary">Để liên hệ và nhận thiết kế về các dự án mới nhất vui lòng nhập đầy đủ thông tin dưới đây để Capitalland có thể
+                                            hỗ trợ bạn tốt nhất.</p>
+                                        <div class="gap-element clearfix" style="display:block; height:auto; padding-top:20px"></div>
+                                        <div role="form" class="wpcf7" id="wpcf7-f136-p21-o1" lang="en-US" dir="ltr">
+                                                <div class="screen-reader-response"></div>
+                                                <%if (status && status === 'SUCCESS'){%>
+                                                <div class="alert alert-success" role="alert">
+                                                    <%=message%>
+                                                </div>
+                                                <%}%>
+        
+                                                    <%if (status && status === 'ERROR'){%>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <%=message%>
+                                                </div>
+                                                <%}%>
+                                                <form action="/contact" method="post">
+                                                <div class="mh-flex-row mh-form-2-col">
+                                                    <label>
+                                                        <span class="wpcf7-form-control-wrap text-995">
+                                                            <input type="text" name="Name" value="" size="40"
+                                                                class="form-control" aria-required="true" aria-invalid="false"
+                                                                placeholder="Tên của bạn">
+                                                        </span>
+                                                    </label>
+                                                    <br>
+                                                    <label>
+                                                        <span class="wpcf7-form-control-wrap text-996">
+                                                            <input type="text" required name="Phone" value="" size="40"
+                                                                class="form-control" aria-required="true" aria-invalid="false"
+                                                                placeholder="Số điện thoại">
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <p>
+                                                    <label>
+                                                        <span class="wpcf7-form-control-wrap email-424">
+                                                            <input type="email" name="Email" required value="" size="40"
+                                                                class="form-control" aria-required="true" aria-invalid="false"
+                                                                placeholder="Địa chỉ Email">
+                                                        </span>
+                                                    </label>
+                                                    <label>
+                                                        <span class="wpcf7-form-control-wrap email-424">
+                                                            <input type="text" name="Address" value="" size="40"
+                                                                class="form-control" aria-required="true" aria-invalid="false"
+                                                                placeholder="Địa chỉ ">
+                                                        </span>
+                                                    </label>
+                                                    <br>
+                                                    <label>
+                                                        <span class="wpcf7-form-control-wrap textarea-339">
+                                                            <textarea name="Message" cols="40" rows="10" class="form-control"
+                                                                aria-required="true" aria-invalid="false"
+                                                                placeholder="Lời nhắn"></textarea>
+                                                        </span>
+                                                    </label>
+                                                    <br>
+                                                    <label class="text-left">
+                                                        <button type="submit"
+                                                            class="wpcf7-form-control wpcf7-submit mh-submit">Gửi liên
+                                                            hệ</button>
+                                                    </label>
+                                                </p>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </section>
+    
+            </div>
+        </main>
+    <% include ../partials/footer %>
+</body>
+
+</html>

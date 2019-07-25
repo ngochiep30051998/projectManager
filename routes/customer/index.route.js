@@ -25,7 +25,7 @@ router.get('/project', async (req, res) => {
 router.get('/project-detail/:id', async (req, res) => {
     const id = req.params.id;
     const project = await projectModel.getProjectById(id);
-    res.render('customer/pages/projectDetail', { 
+    res.render('customer/pages/projectDetail', {
         project: project[0],
         message: '',
         status: ''
@@ -42,15 +42,15 @@ router.post('/project-detail/:id', async (req, res) => {
         ProjectId: id
     }
     const insert = await customerModel.insert(customer);
-    if(insert.affectedRows>0){
+    if (insert.affectedRows > 0) {
         const project = await projectModel.getProjectById(id);
-        res.render('customer/pages/projectDetail', { 
+        res.render('customer/pages/projectDetail', {
             project: project[0],
             status: status.SUCCESS,
             message: "Gửi thành công"
         })
     } else {
-        res.render('customer/pages/projectDetail', { 
+        res.render('customer/pages/projectDetail', {
             project: project[0],
             status: status.ERROR,
             message: "Gửi thất bại"
@@ -63,11 +63,41 @@ router.get('/intro', (req, res) => {
     res.render('customer/pages/intro');
 })
 
-router.get('/news',async (req, res) => {
+router.get('/news', async (req, res) => {
 
     const result = await newsModel.getAll();
-    res.render('customer/pages/news',{
+    res.render('customer/pages/news', {
         listNews: result
     });
+})
+
+router.get('/contact', async (req, res) => {
+
+    res.render('customer/pages/contact', {
+        message: '',
+        status: '',
+    });
+})
+
+router.post('/contact', async (req, res) => {
+
+    const customer = {
+        Name: req.body.Name,
+        Phone: req.body.Phone,
+        Email: req.body.Email,
+        Address: req.body.Address
+    }
+    const insert = await customerModel.insert(customer);
+    if (insert.affectedRows > 0) {
+        res.render('customer/pages/contact', {
+            status: status.SUCCESS,
+            message: "Gửi thành công"
+        })
+    } else {
+        res.render('customer/pages/contact', {
+            status: status.ERROR,
+            message: "Gửi thất bại"
+        })
+    }
 })
 module.exports = router;
