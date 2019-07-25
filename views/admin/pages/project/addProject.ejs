@@ -41,7 +41,7 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">Tên sự
                                     án</label></div>
-                            <div class="col-12 col-md-7"><input type="text" id="text-input" name="projectName"
+                            <div class="col-12 col-md-7"><input required type="text" id="text-input" name="projectName"
                                     class="form-control"></div>
                         </div>
                         <div class="row form-group">
@@ -61,7 +61,7 @@
                         <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">Giá</label>
                             </div>
-                            <div class="col-12 col-md-2"><input type="number" id="text-input" name="price"
+                            <div class="col-12 col-md-2"><input required type="number" id="text-input" name="price"
                                     class="form-control"></div>
                         </div>
                         <div class="row form-group">
@@ -76,7 +76,7 @@
                             <img class="img-thumbnail" src="http://placehold.it/400x400" id="displayImg" alt="">
                         </div>
                         <fieldset class="form-group">
-                            <input type="file" class="form-control-file" onchange="onFileSelected(event)" id="image"
+                            <input type="file" class="form-control-file" required onchange="onFileSelected(event)" id="image"
                                 name="image">
                         </fieldset>
                         <button type="submit" class="btn btn-primary btn-sm">

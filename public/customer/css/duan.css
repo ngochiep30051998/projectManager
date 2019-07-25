@@ -1,15 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+*{margin:0;padding: 0;}
 
-img.imglogo {
-    margin-top: -10px;
-}
+img.imglogo {margin-top: -10px;}
 
 .imagenho1:hover p {
     opacity: 1;
 }
+
 
 .imagenho1 a {
     font-size: 15px;
@@ -43,12 +39,7 @@ img.imglogo {
     cursor: pointer;
 }
 
-.arrowleft {
-    position: absolute;
-    top: 56%;
-    left: 5%;
-    cursor: pointer;
-}
+.arrowleft {position: absolute;top: 56%;left: 5%;cursor: pointer;}
 
 .item img {
     padding: 10px;
@@ -74,11 +65,7 @@ img.imglogo {
     font-size: 32px;
 }
 
-.dangky input.form-control.mb-2.text-center {
-    background: #004B84;
-    border: none;
-    border-radius: 0px;
-}
+.dangky input.form-control.mb-2.text-center {background: #004B84;border: none;border-radius: 0px;}
 
 .khoi4_ft h3 {
     font-size: 13px;
@@ -92,11 +79,7 @@ img.imglogo {
     position: relative;
 }
 
-.dangky label {
-    position: absolute;
-    top: 65px;
-    left: 224px;
-}
+.dangky label {position: absolute;top: 65px;left: 224px;}
 
 .khoi3_ft h3 {
     font-size: 13px;
@@ -228,11 +211,7 @@ footer {
     padding-top: 7px;
     text-align: justify;
 }
-.khoi1_ct4 .content {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
 .khoi1_ct4 a {
     font-size: 16px;
     color: #363636;
@@ -242,12 +221,12 @@ footer {
 
 .khoi1_ct4 img {
     float: left;
+    padding-right: 12px;
 }
 
 .khoi1_ct4 {
     border: 1px solid #EEEEEE;
     border-radius: 2px;
-    margin-top: 1em;
 }
 
 .khoi1_ct4.ct4 {
@@ -260,11 +239,6 @@ footer {
     padding-top: 12px;
 }
 
-.khoito_ct4 .content {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} 
 .khoito_ct4 img {
     padding-bottom: 24px;
 }
@@ -296,9 +270,7 @@ footer {
     top: 70%;
 }
 
-.content_3 {
-    background: #F5F5F5;
-}
+.content_3 {background: #F5F5F5;}
 
 .imagenho1 {
     padding-bottom: 22px;
@@ -307,16 +279,14 @@ footer {
 
 .imagenho1:hover a {
     opacity: 1;
-    border: 1px solid white;
+     border:  1px solid white;
     border-radius: 20px;
     background: white;
     color: black;
     padding: 10px;
 }
 
-.imagenho1:hover h3 {
-    opacity: 1;
-}
+.imagenho1:hover h3 {opacity: 1;}
 
 .khoinho3_ct3 img {
     display: block;
@@ -348,11 +318,7 @@ footer {
     color: #868686;
 }
 
-.khoinho1_ct3 img {
-    display: block;
-    margin: auto;
-    padding-bottom: 18px;
-}
+.khoinho1_ct3 img {display: block;margin: auto;padding-bottom: 18px;}
 
 hr {
     padding-top: 12px;
@@ -400,6 +366,7 @@ hr {
     left: 48%;
     top: 70%;
 }
+
 
 .content_2 {
     background: url(../images/nen.jpg);
@@ -466,7 +433,8 @@ hr {
     margin: auto;
 }
 
-.khoinho3 {}
+.khoinho3 {
+}
 
 .khoinho2 h1 {
     color: #1773B9;
@@ -592,12 +560,7 @@ li {
     padding-right: 0px;
 }
 
-.nd_hotline {
-    position: absolute;
-    top: 2px;
-    left: 70%;
-    color: white;
-}
+.nd_hotline {position: absolute;top: 2px;left: 70%;color: white;}
 
 .nd_hotline p {
     float: left;
@@ -616,7 +579,7 @@ li {
 }
 
 #section_1629092814 {
-    padding: 20px 20px 20px 80px;
+	padding: 20px 20px 20px 80px;
 }
 
 .direct-page {
@@ -630,3 +593,20 @@ li {
 .content-project {
     padding: 50px;
 }
+
+.content-detail-news {
+    padding: 50px 30px;
+}
+
+#detail-content {
+    padding: 50px;
+}
+
+.img-project {
+    padding-bottom: 50px;
+}
+
+.content-detail-news .content {
+    
+}
+

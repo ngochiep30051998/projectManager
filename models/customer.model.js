@@ -25,7 +25,20 @@ const deleteCustomer = (id) => {
         });
     });
 }
+
+const insert = (params) => {
+    return new Promise((resolve, reject) => {
+        conn.query('INSERT INTO customer SET ?', params, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
-    deleteCustomer: deleteCustomer
+    deleteCustomer: deleteCustomer,
+    insert: insert
 }
