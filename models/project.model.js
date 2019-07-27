@@ -1,10 +1,21 @@
 const db = require('../common/database');
 const conn = db.getConection();
 
-
-const getAll = () => {
+const getAll = (limit, offset) => {
     return new Promise((resolve, reject) => {
-        conn.query('select * FROM project', (err, result) => {
+        conn.query('select * FROM project LIMIT ? OFFSET ?', [limit, offset], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
+const getCountProject = () => {
+    return new Promise((resolve, reject) => {
+        conn.query('select count(*) as count FROM project ', (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -104,5 +115,6 @@ module.exports = {
     deleteProject: deleteProject,
     searchProject: searchProject,
     getOutstandingProject: getOutstandingProject,
-    getImageFromProject: getImageFromProject
+    getImageFromProject: getImageFromProject,
+    getCountProject: getCountProject
 }

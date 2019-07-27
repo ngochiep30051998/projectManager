@@ -34,22 +34,38 @@
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
+                                    <th>Lời nhắn</th>
                                     <th>Dự án quan tâm</th>
                                 </thead>
                                 <tbody>
                                     <% listCustomer.forEach((customer) => { %>
                                     <tr>
-                                        <td style="width:25%;"><%= customer.Name %></td>
-                                        <td style="width:15%;"><%= customer.Phone %></td>
-                                        <td style="width:15%;"><%= customer.Email %></td>
+                                        <td style="width:15%;"><%= customer.Name %></td>
+                                        <td style="width:10%;"><%= customer.Phone %></td>
+                                        <td style="width:10%;"><%= customer.Email %></td>
                                         <td style="width:20%;"><%= customer.Address %></td>
+                                        <td style="width:20%;"><%= customer.Message %></td>
                                         <td style="width:25%;"><%= customer.ProjectName %></td>
                                     </tr>
                                     <% }); %>
                                 </tbody>
                             </table>
                         </div>
-
+                        <% if(numPages>0) {%>
+                            <ul class="pagination">
+                                <% for(let i = 1;i<= numPages ;i++) { %>
+                                <% if(i==page) {%>
+                                <li class="page-item active">
+                                    <a class="page-link " href="/admin/customer?page=<%= i %>"><%= i %></a>
+                                </li>
+                                <% } else {%>
+                                <li class="page-item">
+                                    <a class="page-link" href="/admin/customer?page=<%= i %>"><%= i %></a>
+                                </li>
+                                <% } %>
+                                <% } %>
+                            </ul>
+                            <% } %>
                     </div>
                 </div>
             </div><!-- .animated -->

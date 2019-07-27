@@ -609,4 +609,6 @@ li {
 .content-detail-news .content {
     
 }
-
+.pagination li{
+    margin: 0px !important;
+}

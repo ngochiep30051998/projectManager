@@ -27,7 +27,8 @@
                 <div class="row">
                     <div class="card-header col-sm-12">
                         <form class="form-inline my-2 my-lg-0 " method="GET" action="/admin/project/search">
-                            <input class="form-control mr-sm-2 col-sm-4" name="q" type="text" placeholder="Nhập từ khóa">
+                            <input class="form-control mr-sm-2 col-sm-4" name="q" type="text"
+                                placeholder="Nhập từ khóa">
                             <button type="submit" class="btn btn-dark rounded" class="col-sm-4">Tìm kiếm</button>
                         </form>
                     </div>
@@ -48,8 +49,9 @@
                                     <% listProject.forEach((project) => { %>
                                     <tr>
                                         <td style="width:10%;"><%= project.Id %></td>
-                                        <td style="width:20%;"> 
-                                            <img src="<%='/upload/project/' +project.Image %>"id="displayImg" alt="ảnh dự án" width="70%">
+                                        <td style="width:20%;">
+                                            <img src="<%='/upload/project/' +project.Image %>" id="displayImg"
+                                                alt="ảnh dự án" width="70%">
                                         </td>
                                         <td style="width:20%;"><%= project.ProjectName %></td>
                                         <td style="width:20%;"><%= project.Location %></td>
@@ -69,11 +71,26 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        <% if(numPages>0) {%>
+                        <ul class="pagination">
+                            <% for(let i = 1;i<= numPages ;i++) { %>
+                            <% if(i==page) {%>
+                            <li class="page-item active">
+                                <a class="page-link " href="/admin/project?page=<%= i %>"><%= i %></a>
+                            </li>
+                            <% } else {%>
+                            <li class="page-item">
+                                <a class="page-link" href="/admin/project?page=<%= i %>"><%= i %></a>
+                            </li>
+                            <% } %>
+                            <% } %>
+                        </ul>
+                        <% } %>
                     </div>
                 </div>
             </div><!-- .animated -->
         </div> <!-- .content -->
+
 
 
         <% include ../../partials/footer %>

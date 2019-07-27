@@ -18,8 +18,19 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/project', async (req, res) => {
-    const listProject = await projectModel.getAll();
-    res.render('customer/pages/project', { listProject });
+
+    const limit = 6;
+    const totalProject = await projectModel.getCountProject();
+    const numPages = Math.ceil(totalProject[0].count / limit);
+    const page = parseInt(req.query.page) || 1;
+    const offset = page > 0 ? limit * page - limit : 0;
+    const result = await projectModel.getAll(limit, offset);
+
+    res.render('customer/pages/project', {
+        listProject: result,
+        numPages: numPages,
+        page: page
+    });
 })
 
 router.get('/project-detail/:id', async (req, res) => {
@@ -39,6 +50,7 @@ router.post('/project-detail/:id', async (req, res) => {
         Phone: req.body.Phone,
         Email: req.body.Email,
         Address: req.body.Address,
+        Message: req.body.Message,
         ProjectId: id
     }
     const insert = await customerModel.insert(customer);
@@ -64,10 +76,16 @@ router.get('/intro', (req, res) => {
 })
 
 router.get('/news', async (req, res) => {
-
-    const result = await newsModel.getAll();
+    const limit = 6;
+    const totalProject = await newsModel.getCountNews();
+    const numPages = Math.ceil(totalProject[0].count / limit);
+    const page = parseInt(req.query.page) || 1;
+    const offset = page > 0 ? limit * page - limit : 0;
+    const result = await newsModel.getAll(limit, offset);
     res.render('customer/pages/news', {
-        listNews: result
+        listNews: result,
+        numPages: numPages,
+        page: page
     });
 })
 
@@ -85,7 +103,8 @@ router.post('/contact', async (req, res) => {
         Name: req.body.Name,
         Phone: req.body.Phone,
         Email: req.body.Email,
-        Address: req.body.Address
+        Address: req.body.Address,
+        Message: req.body.Message
     }
     const insert = await customerModel.insert(customer);
     if (insert.affectedRows > 0) {

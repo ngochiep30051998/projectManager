@@ -2,9 +2,21 @@ const db = require('../common/database');
 const conn = db.getConection();
 
 
-const getAll = () => {
+const getAll = (limit, offset) => {
     return new Promise((resolve, reject) => {
-        conn.query('select * FROM news', (err, result) => {
+        conn.query('select * FROM news LIMIT ? OFFSET ?', [limit, offset], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
+const getCountNews = () => {
+    return new Promise((resolve, reject) => {
+        conn.query('select count(*) as count FROM news ', (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -105,5 +117,6 @@ module.exports = {
     addNews: addNews,
     searchNews: searchNews,
     getOutstandingNews: getOutstandingNews,
-    getImageFromNews: getImageFromNews
+    getImageFromNews: getImageFromNews,
+    getCountNews: getCountNews
 }

@@ -17,9 +17,16 @@ const validateHelper = require('../../helpers/validate');
 
 
 router.get('/', middleware.LoggedIn, async (req, res) => {
-    const result = await newsModel.getAll();
+    const limit = 6;
+    const totalProject = await newsModel.getCountNews();
+    const numPages = Math.ceil(totalProject[0].count / limit);
+    const page = parseInt(req.query.page) || 1;
+    const offset = page > 0 ? limit * page - limit : 0;
+    const result = await newsModel.getAll(limit, offset);
     res.render('admin/pages/news/newsManagement', {
-        listNews: result
+        listNews: result,
+        numPages: numPages,
+        page: page
     });
 })
 

@@ -2,9 +2,21 @@ const db = require('../common/database');
 const conn = db.getConection();
 
 
-const getAll = () => {
+const getAll = (limit, offset) => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT customer.*,project.ProjectName FROM customer LEFT JOIN project on customer.ProjectId = project.Id', (err, result) => {
+        conn.query('SELECT customer.*,project.ProjectName FROM customer LEFT JOIN project on customer.ProjectId = project.Id LIMIT ? OFFSET ?', [limit, offset], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
+const countCustomer = () => {
+    return new Promise((resolve, reject) => {
+        conn.query('select count(*) as count FROM customer ', (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -40,5 +52,6 @@ const insert = (params) => {
 module.exports = {
     getAll: getAll,
     deleteCustomer: deleteCustomer,
-    insert: insert
+    insert: insert,
+    countCustomer: countCustomer
 }

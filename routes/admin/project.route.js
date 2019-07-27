@@ -17,9 +17,17 @@ const validateHelper = require('../../helpers/validate');
 const fs = require('fs');
 
 router.get('/', middleware.LoggedIn, async (req, res) => {
-    const result = await projectModel.getAll();
+
+    const limit = 6;
+    const totalProject = await projectModel.getCountProject();
+    const numPages = Math.ceil(totalProject[0].count / limit);
+    const page = parseInt(req.query.page) || 1;
+    const offset = page > 0 ? limit * page - limit : 0;
+    const result = await projectModel.getAll(limit, offset);
     res.render('admin/pages/project/projectManagement', {
-        listProject: result
+        listProject: result,
+        numPages: numPages,
+        page: page
     });
 })
 
@@ -81,7 +89,7 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Price: req.body.price,
         ViewNumber: req.body.viewNumber
     }
-    if(req.file){
+    if (req.file) {
         fs.unlinkSync(oldImagePath);
     }
     const validate = validateHelper.validateEditProject(req);
