@@ -85,7 +85,7 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Link: req.body.newsLink
     }
 
-    if(req.file){
+    if (req.file) {
         fs.unlinkSync(oldImagePath);
     }
 
@@ -113,8 +113,10 @@ router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
         const oldImagePath = `public/upload/news/${image[0].Image}`;
 
         const del = await newsModel.deleteNews(req.params.id);
+        if (oldImagePath !== '') {
+            fs.unlinkSync(oldImagePath);
 
-        fs.unlinkSync(oldImagePath);
+        }
 
         let responseData = {
             status: true
