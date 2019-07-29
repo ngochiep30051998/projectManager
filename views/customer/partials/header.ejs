@@ -76,7 +76,12 @@
                             <a href="/contact">liên hệ</a>
                         </li>
                         <li>
-                            <img src="/customer/images/search.png" alt="">
+                            <form class="form-inline" method="GET" action="/search">
+                                <div class="form-group mx-sm-3 mb-2">
+                                  <input type="text" class="form-control" name="q" placeholder="Nhập từ khóa">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button>
+                              </form>
                         </li>
                     </ul>
                 </div>
