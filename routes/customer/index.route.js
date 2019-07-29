@@ -6,6 +6,7 @@ const customerModel = require('../../models/customer.model');
 const projectModel = require('../../models/project.model');
 
 const status = require('../../constants/status');
+
 //project
 router.get('/', async (req, res) => {
     const listProject = await projectModel.getOutstandingProject();
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
         listNews: listNews ? listNews : []
     }
     res.render('customer/pages/index', { data });
-})
+});
 
 router.get('/project', async (req, res) => {
 
@@ -31,7 +32,7 @@ router.get('/project', async (req, res) => {
         numPages: numPages,
         page: page
     });
-})
+});
 
 router.get('/project-detail/:id', async (req, res) => {
     const id = req.params.id;
@@ -41,7 +42,7 @@ router.get('/project-detail/:id', async (req, res) => {
         message: '',
         status: ''
     })
-})
+});
 
 router.post('/project-detail/:id', async (req, res) => {
     const id = req.params.id;
@@ -69,11 +70,11 @@ router.post('/project-detail/:id', async (req, res) => {
         })
     }
 
-})
+});
 
 router.get('/intro', (req, res) => {
     res.render('customer/pages/intro');
-})
+});
 
 router.get('/news', async (req, res) => {
     const limit = 6;
@@ -87,7 +88,7 @@ router.get('/news', async (req, res) => {
         numPages: numPages,
         page: page
     });
-})
+});
 
 router.get('/contact', async (req, res) => {
 
@@ -95,7 +96,7 @@ router.get('/contact', async (req, res) => {
         message: '',
         status: '',
     });
-})
+});
 
 router.post('/contact', async (req, res) => {
 
@@ -118,5 +119,15 @@ router.post('/contact', async (req, res) => {
             message: "Gửi thất bại"
         })
     }
+});
+
+//search
+router.get('/search', async (req, res) => {
+    const param = req.query.q;
+    const result = await projectModel.searchProject(param);
+    res.render('customer/pages/search', {
+        listProject: result
+    })
 })
+
 module.exports = router;

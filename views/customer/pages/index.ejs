@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Trang chủ</title>
     <% include ../partials/head %>
 </head>
 
@@ -161,26 +162,26 @@
 
     <% include ../partials/footer %>
 
-    <script>
-        $(document).ready(() => {
-            const viewLess = document.getElementById("viewLess");
-            viewLess.style.display = "none";
-        })
-        $('#viewMore').on('click', () => {
-            $('.content-new').css('white-space','inherit');
-            const viewLess = document.getElementById("viewLess");
-            const viewMore = document.getElementById("viewMore");
-            viewMore.style.display = "none";
-            viewLess.style.display = "inline";
-        });
-        $('#viewLess').on('click', () => {
-            $('.content-new').css('white-space','nowrap');
-            const viewLess = document.getElementById("viewLess");
-            const viewMore = document.getElementById("viewMore");
-            viewMore.style.display = "inline";
-            viewLess.style.display = "none";
-        });
-    </script>
+            <script>
+                $(document).ready(() => {
+                    const viewLess = document.getElementById("viewLess");
+                    viewLess.style.display = "none";
+                })
+                $('#viewMore').on('click', () => {
+                    $('.content-new').css('white-space', 'inherit');
+                    const viewLess = document.getElementById("viewLess");
+                    const viewMore = document.getElementById("viewMore");
+                    viewMore.style.display = "none";
+                    viewLess.style.display = "inline";
+                });
+                $('#viewLess').on('click', () => {
+                    $('.content-new').css('white-space', 'nowrap');
+                    const viewLess = document.getElementById("viewLess");
+                    const viewMore = document.getElementById("viewMore");
+                    viewMore.style.display = "inline";
+                    viewLess.style.display = "none";
+                });
+            </script>
 </body>
 
 </html>
