@@ -606,9 +606,39 @@ li {
     padding-bottom: 50px;
 }
 
-.content-detail-news .content {
-    
-}
+
 .pagination li{
     margin: 0px !important;
+}
+
+.project-name {
+    width: 100%;
+    text-align: center;
+}
+
+.project-location {
+    width: 100%;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.content-new {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.content-details {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 5; /* number of lines to show */
+   line-height: 1.8em;        
+   max-height: 150px;
+}
+
+.content-news {
+    height: 300px;
+    padding-bottom: 10px
 }

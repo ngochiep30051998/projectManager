@@ -81,9 +81,9 @@
                 <% data.listProject.forEach((project) => { %>
                 <div class="col-lg-4">
                     <div class="imagenho1">
-                        <img src="<%='/upload/project/' +project.Image %>" width="100%" alt="">
-                        <h3><%= project.ProjectName %></h3>
-                        <p><%= project.Location %></p>
+                        <img src="<%='/upload/project/' +project.Image %>" width="100%" height="200" alt="">
+                        <h3 class="project-name"><%= project.ProjectName %></h3>
+                        <p class="project-location"><%= project.Location %></p>
                         <a href="/project-detail/<%= project.Id%>" class="xct">xem chi tiết</a>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                         <a href="<%= data.listNews[0].Link %>" target="_blank">
                             <p><%= data.listNews[0].Title %></p>
                         </a>
-                        <p class="content" id="content"><%= data.listNews[0].Content %></p>
+                        <p class="content-new"><%= data.listNews[0].Content %></p>
                         <b id="viewMore" class="btn btn-outline-primary">Xem thêm</b>
                         <b id="viewLess" class="btn btn-outline-primary">Thu gọn</b>
                     </div>
@@ -130,7 +130,7 @@
                                 <a href="<%= data.listNews[i].Link %>" target="_blank">
                                     <p><%= data.listNews[i].Title %></p>
                                 </a>
-                                <p class="content"><%= data.listNews[i].Content %></p>
+                                <!-- <p class="content"><%= data.listNews[i].Content %></p> -->
                             </div>
                         </div>
 
@@ -167,14 +167,14 @@
             viewLess.style.display = "none";
         })
         $('#viewMore').on('click', () => {
-            $('#content').removeClass('content');
+            $('.content-new').css('white-space','inherit');
             const viewLess = document.getElementById("viewLess");
             const viewMore = document.getElementById("viewMore");
             viewMore.style.display = "none";
             viewLess.style.display = "inline";
         });
         $('#viewLess').on('click', () => {
-            $('#content').addClass('content');
+            $('.content-new').css('white-space','nowrap');
             const viewLess = document.getElementById("viewLess");
             const viewMore = document.getElementById("viewMore");
             viewMore.style.display = "inline";
