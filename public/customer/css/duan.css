@@ -649,3 +649,7 @@ li {
     top: 18px;
     width: 200px;
 }
+
+#btn-search {
+    cursor: pointer;
+}
