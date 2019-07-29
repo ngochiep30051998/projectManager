@@ -10,9 +10,9 @@
 const DB_CONFIG = {
     host: "us-cdbr-iron-east-02.cleardb.net",
     port: "3306",
-    database: "heroku_d91c22223a25724",
-    user: "b27b75b7e46d18",
-    password: "2bddc4a4",
+    database: "heroku_175600d35d4572a",
+    user: "b2367a4e9834d5",
+    password: "692cca6b",
     prefix: ""
 }
 
