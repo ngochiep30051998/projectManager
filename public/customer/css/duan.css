@@ -642,3 +642,10 @@ li {
     height: 300px;
     padding-bottom: 10px
 }
+
+#inputText {
+    position: absolute;
+    right: 100px;
+    top: 18px;
+    width: 200px;
+}
