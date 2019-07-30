@@ -76,16 +76,24 @@
                             <a href="/contact">liên hệ</a>
                         </li>
                         <li>
-                            <form class="form-inline" method="GET" action="/search">
-                                <div class="form-group mx-sm-3 mb-2">
-                                  <input type="text" class="form-control" name="q" placeholder="Nhập từ khóa">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button>
-                              </form>
+                            <img id="btn-search" src="/customer/images/search.png" alt="">
                         </li>
                     </ul>
+                    <form class="form-inline" method="GET" action="/search">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" id="inputText" name="q" placeholder="Nhập từ khóa">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 btn-search-hide" style="display: none;">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<script>
+    $('#btn-search').on('click', () => {        
+        $('.btn-search-hide').click()
+    })
+</script>

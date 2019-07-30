@@ -85,9 +85,10 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Link: req.body.newsLink
     }
 
-    if (req.file) {
+    if (req.file && fs.existsSync(oldImagePath)) {
         fs.unlinkSync(oldImagePath);
     }
+
 
     const validate = validateHelper.validateNews(req);
     if (validate.status === status.ERROR) {
@@ -113,11 +114,9 @@ router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
         const oldImagePath = `public/upload/news/${image[0].Image}`;
 
         const del = await newsModel.deleteNews(req.params.id);
-        if (oldImagePath !== '') {
+        if (fs.existsSync(oldImagePath) || oldImagePath !== '') {
             fs.unlinkSync(oldImagePath);
-
         }
-
         let responseData = {
             status: true
         }
@@ -127,6 +126,7 @@ router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
             status: false,
             err: e
         }
+        console.log(e)
         return res.json(responseData)
     }
 
