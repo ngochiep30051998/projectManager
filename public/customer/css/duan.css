@@ -645,9 +645,9 @@ li {
 
 #inputText {
     position: absolute;
-    right: 100px;
+    right: 7%;
     top: 18px;
-    width: 200px;
+    width: 15%;
 }
 
 #btn-search {
