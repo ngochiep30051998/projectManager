@@ -4,7 +4,7 @@ const conn = db.getConection();
 
 const getAll = (limit, offset) => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT customer.*,project.ProjectName FROM customer LEFT JOIN project on customer.ProjectId = project.Id LIMIT ? OFFSET ?', [limit, offset], (err, result) => {
+        let query = conn.query('SELECT customer.*,project.ProjectName FROM customer LEFT JOIN project on customer.ProjectId = project.Id LIMIT ? OFFSET ?', [limit, offset], (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -16,7 +16,7 @@ const getAll = (limit, offset) => {
 
 const countCustomer = () => {
     return new Promise((resolve, reject) => {
-        conn.query('select count(*) as count FROM customer ', (err, result) => {
+        let query = conn.query('select count(*) as count FROM customer ', (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -28,7 +28,7 @@ const countCustomer = () => {
 
 const deleteCustomer = (id) => {
     return new Promise((resolve, reject) => {
-        conn.query('DELETE FROM customer WHERE ProjectId = ?', id, (err, result) => {
+        let query = conn.query('DELETE FROM customer WHERE ProjectId = ?', id, (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -40,7 +40,7 @@ const deleteCustomer = (id) => {
 
 const insert = (params) => {
     return new Promise((resolve, reject) => {
-        conn.query('INSERT INTO customer SET ?', params, (err, result) => {
+        let query = conn.query('INSERT INTO customer SET ?', params, (err, result) => {
             if (err) {
                 reject(err);
             } else {
