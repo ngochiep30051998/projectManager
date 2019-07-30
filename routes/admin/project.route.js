@@ -89,9 +89,10 @@ router.post('/edit/:id', middleware.LoggedIn, upload.single('image'), async (req
         Price: req.body.price,
         ViewNumber: req.body.viewNumber
     }
-    if (req.file) {
+    if (req.file && fs.existsSync(oldImagePath)) {
         fs.unlinkSync(oldImagePath);
     }
+
     const validate = validateHelper.validateEditProject(req);
     if (validate.status === status.ERROR) {
         res.render('admin/pages/project/editProject', {
@@ -116,7 +117,9 @@ router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
         const oldImagePath = `public/upload/project/${image[0].Image}`;
         const delCustomer = await customerModel.deleteCustomer(req.params.id);
         const del = await projectModel.deleteProject(req.params.id);
-        fs.unlinkSync(oldImagePath);
+        if (fs.existsSync(oldImagePath) || oldImagePath !== '') {
+            fs.unlinkSync(oldImagePath);
+        }
         let responseData = {
             status: true
         }
