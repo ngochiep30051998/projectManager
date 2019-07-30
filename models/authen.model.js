@@ -3,7 +3,7 @@ const conn = db.getConection();
 
 const login = (UserName, Password) => {
     return new Promise((resolve, reject) => {
-        conn.query('select UserName FROM account WHERE UserName = ? and Password = ? ', [UserName, Password], (err, result) => {
+        let query = conn.query('select UserName FROM account WHERE UserName = ? and Password = ? ', [UserName, Password], (err, result) => {
             if (err) {
                 reject(err);
             } else {
