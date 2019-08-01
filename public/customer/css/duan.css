@@ -373,6 +373,10 @@ hr {
     position: relative;
 }
 
+.iconleft {
+    cursor: pointer;
+}
+
 .iconleft img.arrow {
     background: #7B7B7B;
     padding: 13px 7px;

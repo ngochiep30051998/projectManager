@@ -55,8 +55,12 @@
             </div>
 
             <div class="iconleft">
-                <img class="dt" src="customer/images/dt_nd1.png" alt="">
-                <img class="email" src="customer/images/email.png" alt="">
+                <a href="/contact">
+                    <img class="dt" src="customer/images/dt_nd1.png" alt="">
+                </a>
+                <a href="/contact">
+                    <img class="email" src="customer/images/email.png" alt="">
+                </a>
                 <img class="arrow" src="customer/images/arrow_top.png" alt="">
             </div>
         </div>
@@ -180,6 +184,11 @@
                     const viewMore = document.getElementById("viewMore");
                     viewMore.style.display = "inline";
                     viewLess.style.display = "none";
+                });
+                $('.arrow').click(function() {      // When arrow is clicked
+                    $('body,html').animate({
+                        scrollTop : 0                       // Scroll to top of body
+                    }, 500);
                 });
             </script>
 </body>
