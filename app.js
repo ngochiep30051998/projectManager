@@ -56,4 +56,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.locals.formatMoney = function(price) {
+  return price.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,')
+}
 module.exports = app;

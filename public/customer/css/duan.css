@@ -657,3 +657,11 @@ li {
 #btn-search {
     cursor: pointer;
 }
+
+.choose-price {
+    margin-left: 70px
+}
+
+.btn-link {
+    margin-left: 7px
+}

@@ -46,9 +46,8 @@
                                 <h5 class="section-title section-title-normal">
                                     <b></b>
                                     <span class="section-title-main"
-                                        style="font-size:85%;">Giá: <%=project.Price %> VNĐ</span>
+                                        style="font-size:85%;">Giá: <%= formatMoney(project.Price) %> VNĐ</span>
                                     <b></b>
-                                </h5>
                             </h3>
                             <h5 class="section-title section-title-normal">
                                 <b></b>
@@ -149,6 +148,12 @@
             </section>
 
         </div>
+        <script>
+            function formatMoney(money) {
+                var price = String(money).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+                return price;
+            }  
+        </script>
     </main>
 
     <% include ../partials/footer %>
