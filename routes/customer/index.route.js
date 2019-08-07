@@ -130,4 +130,33 @@ router.get('/search', async (req, res) => {
     })
 })
 
+//filter 
+
+router.get('/filter', async (req, res) => {
+    const option = req.query.option;
+    let query = '';
+    switch(option){
+        case 'option1': {
+            query = 'SELECT * FROM project WHERE Price < 1000000000';
+            break;
+        }
+        case 'option2': {
+            query = 'SELECT * FROM project WHERE Price BETWEEN 1000000000 AND 3000000000';
+            break;
+        }
+        case 'option3': {
+            query = 'SELECT * FROM project WHERE Price > 3000000000';
+            break;
+        }
+        default: {
+            query = 'SELECT * FROM project';
+            break; 
+        }
+    }
+    const result = await projectModel.filterProject(query);
+    res.render('customer/pages/search', {
+        listProject: result
+    })
+})
+
 module.exports = router;

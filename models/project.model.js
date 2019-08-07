@@ -107,6 +107,17 @@ const getImageFromProject = (id) => {
     });
 }
 
+const filterProject = (query) => {
+    return new Promise((resolve, reject) => {
+        conn.query(query, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
     addProject: addProject,
@@ -116,5 +127,6 @@ module.exports = {
     searchProject: searchProject,
     getOutstandingProject: getOutstandingProject,
     getImageFromProject: getImageFromProject,
-    getCountProject: getCountProject
+    getCountProject: getCountProject,
+    filterProject: filterProject
 }
