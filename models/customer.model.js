@@ -38,6 +38,17 @@ const deleteCustomer = (id) => {
     });
 }
 
+const deleteById = (id) => {
+    return new Promise((resolve, reject) => {
+        let query = conn.query('DELETE FROM customer WHERE Id = ?', id, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
 const insert = (params) => {
     return new Promise((resolve, reject) => {
         let query = conn.query('INSERT INTO customer SET ?', params, (err, result) => {
@@ -53,5 +64,6 @@ module.exports = {
     getAll: getAll,
     deleteCustomer: deleteCustomer,
     insert: insert,
-    countCustomer: countCustomer
+    countCustomer: countCustomer,
+    deleteById: deleteById
 }

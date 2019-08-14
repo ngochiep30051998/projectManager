@@ -21,4 +21,22 @@ router.get('/', middleware.LoggedIn, async (req, res) => {
     });
 });
 
+// delete project
+router.delete('/delete/:id', middleware.LoggedIn, async (req, res) => {
+    try {
+        
+        const delCustomer = await customerModel.deleteById(req.params.id);
+        let responseData = {
+            status: true
+        }
+        return res.json(responseData)
+    } catch (e) {
+        let responseData = {
+            status: false,
+            err: e
+        }
+        return res.json(responseData)
+    }
+
+})
 module.exports = router;
